@@ -22,15 +22,27 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
-
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
 models:
   project_one:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    staging:                  #pasta staging dentro da pasta models
+      materialized: table
+      tags: ['staging']
+      staging_sap:
+        materialized: table
+        schema: staging_sap #custom_schema
+        tags: ['staging_sap']
+      staging_northwind:
+        materialized: table
+        schema: staging_northwind #custom_schema
+        tags: ['staging_northwind']
+    intermediate:             #pasta intermediate dentro da pasta models
+      materialized: table
+      tags: ['intermediate']
+    marts:                     #pasta marts dentro da pasta models
+      schema: marts
+      materialized: table
+      tags: ['marts']
+seeds:
+  project_one:
+    schema: seeds   #Nome do schema criado vai concatenar com nome schema padrão. Ex: dbt_seeds
+    tags: ['seeds']

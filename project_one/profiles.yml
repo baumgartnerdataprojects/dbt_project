@@ -5,6 +5,6 @@ project_one:              #Nome do projeto (nome da pasta do projeto)
       type: bigquery
       method: service-account
       project: dbtproject-477617                                 #Trocar <projeto> pelo nome do projeto no BQ
-      dataset: "{{ env_var('DBT_DBNAME', 'project_one_dw') }}"   #Trocar <Nome_Dataset> pelo mesmo no BQ
+      dataset: "{{ env_var('DBT_DBNAME', 'project_one') }}"   #Trocar <Nome_Dataset> pelo mesmo no BQ
       threads: 4
       keyfile: /home/user/pasta_dbt/key/dbtproject-477617-efa05b1a643b.json
