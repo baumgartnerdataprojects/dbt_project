@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: northwind          #Escolhido por mim e usardo dentro do DBT.
     description: "Dados brutos do sistema financeiro da empresa"
-    schema: project_one_dw_seeds
+    schema: seeds
     loader: bigquery
     loaded_at_field: data_carga    #Coluna que será gravada junto a tabela e dirá a data da carga ; A coluna tem que estar criada na tabela fonte
 #    meta:                         #Metadados da Source. Dados de sensibilidade.
@@ -20,6 +20,8 @@ sources:
             description: "ID da categoria"
           - name: category_name
             description: "Nome da categoria"
+            data_tests:
+              - unique
           - name: description
             description: "Descrição da categoria"
           - name: picture
@@ -29,6 +31,8 @@ sources:
         columns:
           - name: order_id
             description: "ID do pedido"
+            data_tests:
+              - unique
           - name: customer_id
             description: "ID do cliente"
           - name: employee_id

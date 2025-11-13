@@ -1,16 +1,15 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
-    
-    {%- if custom_schema_name is none -%}
-    
-        {{ default_schema }}
-    
+
+    {%- if custom_schema_name is not none and target.name in ('prod', 'samples', 'defer', 'non_critical') -%}
+
+        {{ custom_schema_name | trim }}
+
     {%- else -%}
-    
-        {# Se o custom_schema for definido, usamos APENAS ele, sem concatenar #}
-        {{ custom_schema_name | trim }} 
-    
+
+        {{ default_schema }}
+
     {%- endif -%}
 
 {%- endmacro %}
