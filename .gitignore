@@ -1,0 +1,21 @@
+# dbt
+target/
+dbt_packages/
+dbt_modules/
+logs/
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Environment / secrets
+.env
+*.env
+.user.yml
+
+# OS / editor artifacts
+.DS_Store
+*:Zone.Identifier

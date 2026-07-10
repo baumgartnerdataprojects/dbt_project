@@ -1,0 +1,36 @@
+name: 'northwind_analytics'
+version: '1.0.0'
+
+profile: 'northwind_analytics'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  northwind_analytics:
+    staging:
+      materialized: table
+      tags: ['staging']
+      staging_northwind:
+        schema: staging_northwind
+        tags: ['staging_northwind']
+    intermediate:
+      materialized: table
+      tags: ['intermediate']
+    marts:
+      schema: marts
+      materialized: table
+      tags: ['marts']
+
+seeds:
+  northwind_analytics:
+    schema: seeds
+    tags: ['seeds']
